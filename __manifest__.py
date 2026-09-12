@@ -17,5 +17,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/fleet_asset_views.xml',
+        'data/rule_fleet_asset_machinery_safety.xml',
+        'views/menu.xml',
     ]
 }
