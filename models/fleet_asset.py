@@ -4,9 +4,10 @@ class FleetAsset(models.Model):
     _name = 'fleet.asset'
     _description = 'Fleet Asset'
 
-    name = fields.Char(string='Tracking Name')
+    name = fields.Char(string='Asset Name')
     asset_type = fields.Selection(selection=[
-        ('vehicle','vehicle'),
+        ('laptop','Laptop'),
+        ('vehicle','Vehicle'),
         ('machinery','Industrial Machinery'),
     ], string='Asset Type')
     assigned_employee_id = fields.Many2one(comodel_name='hr.employee', string='Employee ID')
