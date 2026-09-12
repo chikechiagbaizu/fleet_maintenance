@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="fleet_asset_form_view" model="ir.ui.view">
+            <field name="name">fleet_asset_form_view</field>
+            <field name="model">fleet.asset</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="asset_type" />
+                                <field name="assigned_employee_id"
+                                    invisible="asset_type != 'vehicle'" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service History">
+                                <field name="service_history_ids">
+                                    <list editable="bottom">
+                                        <field name="service_date" />
+                                        <field name="cost" />
+                                        <field name="notes" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
