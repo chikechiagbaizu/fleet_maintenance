@@ -1,70 +1,57 @@
-# Project 1: Service Fleet & Maintenance Manager 🚛🛠️
+# Service Fleet & Maintenance Manager
 
-An enterprise-grade asset tracking and preventative maintenance compliance module custom-built for the Odoo ecosystem. 
+An Odoo module for tracking physical assets (laptops, vehicles, machinery) and keeping their maintenance on schedule. Each asset has a service history, a service interval, and a computed next-service date, so overdue maintenance is visible at a glance.
 
-## 📋 Business Case & Problem Statement
-Companies managing physical operations infrastructure (logistics vans, construction tools, high-capacity machinery) lose substantial revenue due to unpredicted equipment down-time and operational decay. This breakdown typically happens because organizations lack an integrated, auditable framework to track preventative maintenance and schedule routine services.
+## Features
 
-**The Solution:** This module implements a robust asset lifecycle log tracking engine. It bridges field operations with human resources by tying equipment management to responsible operators, enforcing preventative service logs, and providing structural data security grids to maintain database integrity.
+- **Asset register**: name, type (laptop, vehicle, machinery), and responsible employee.
+- **Vehicle-only fields**: license plate is shown only when the asset type is Vehicle.
+- **Service history**: each asset has a list of service records (date, type, description, cost, technician, state). Deleting an asset deletes its service records.
+- **Preventative maintenance**
+  - Each asset has a service interval in days.
+  - Last service date comes from the latest completed service.
+  - Next service date = last service date + interval.
+  - Overdue assets are flagged and can be filtered in the list view.
+- **Views**: form, list, kanban and search views, with Overdue and By Type filters.
+- **Role-based access**
+  - **Fleet Managers**: full access to all assets and services.
+  - **Regular users**: read-only access to assets assigned to them.
 
----
+## Models
 
-## 🛠️ Key Technical Implementations
-* **Custom Dynamic Relational Architecture:** Built a bidirectional relational link mapping a parent vehicle profile (`fleet.asset`) down to its historical sub-lines (`fleet.service`) using an optimized `One2many` dataset bridge with automated transactional cascade deletes.
-* **Modern UI UX Layout Engineering:** Developed advanced Form, List, and interactive Kanban views matching the modern Odoo 17+ client framework specs (utilizing the new `<list>` grid layout paradigm).
-* **Conditional Client-Side Form Modifiers:** Implemented dynamic field visibility constraints using optimized evaluation strings (`invisible="asset_type != 'vehicle'"`) to adjust field states on the interface in real-time based on selected data matrices.
-* **Rigorous Multilayer Access Control:** Locked down system access parameters using row-level security boundaries (`ir.rule`) and group-level data access profiles (`ir.model.access.csv`), restricting regular employees to a read-only baseline for specific equipment classifications (`machinery`).
+| Model | Purpose |
+|---|---|
+| `fleet.asset` | The asset and its maintenance schedule |
+| `fleet.service` | A single planned or completed service on an asset |
 
----
+## Installation
 
-## 🗂️ Module Directory Structure
-```text
-fleet_maintenance/
-├── __manifest__.py                  # Module descriptor and data load order definition
-├── __init__.py                      # Python package initializers
-├── models/
-│   ├── __init__.py
-│   ├── fleet_asset.py               # Core persistent model data structures
-│   └── fleet_service.py             # Relational service logs model
-├── security/
-│   ├── ir.model.access.csv          # Matrix configuration for Group-level CRUD permissions
-│   └── fleet_security_rules.xml     # Row-level record rules (ir.rule) for data isolation
-└── views/
-    ├── fleet_asset_views.xml        # Form, List, and Window Action UI configurations
-    └── menu.xml                     # Global navigation menu hierarchy layout
+1. Copy `fleet_maintenance` into your Odoo `addons` path.
+2. Restart the server and update the Apps list.
+3. Install **Service Fleet & Maintenance Manager** (depends on `base` and `hr`).
+
+To apply updates:
+
+```
+odoo -d <your_db> -u fleet_maintenance --stop-after-init
 ```
 
----
+## Usage
 
-## 🔩 Technical Specifications & Code Snippets
+1. Create an asset, set its type, responsible employee and service interval.
+2. Add service records in the asset's Service History tab.
+3. Mark a service as Done. The asset's last and next service dates update automatically.
+4. Use the Overdue filter in the asset list to see what needs attention.
 
-### Data Architecture (Python ORM Models)
-```python
-class FleetAsset(models.Model):
-    _name = 'fleet.asset'
-    _description = 'Fleet Asset'
+## Requirements
 
-    name = fields.Char(string='Tracking Name', required=True)
-    asset_type = fields.Selection([
-        ('laptop', 'Laptop'),
-        ('vehicle', 'Vehicle'),
-        ('machinery', 'Industrial Machinery'),
-    ], string='Asset Type', required=True)
-    assigned_employee_id = fields.Many2one('hr.employee', string='Responsible Employee')
-    service_history_ids = fields.One2many('fleet.service', 'asset_id', string='Service History')
-```
+- Odoo 19.0
+- Depends on `hr`; no external Python dependencies
 
-### High-Density Data Security Configuration
-```csv
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_fleet_asset_manager,fleet.asset,model_fleet_asset,base.group_system,1,1,1,1
-access_fleet_asset_user,fleet.asset,model_fleet_asset,base.group_user,1,0,0,0
-```
+## License
 
----
+LGPL-3
 
-## 🚀 Deployment & Installation Checklist
-1. Place the module folder inside your Odoo `custom_addons` directory path.
-2. Ensure dependencies (`hr` for employee management) are present in your target database.
-3. Update the Odoo configuration or manifest index via the dashboard interface (*Apps -> Update Apps List*).
-4. Install `fleet_maintenance`. Test permissions by logging in under a non-administrative account assigned to the standard `Internal User` group (`base.group_user`) to verify that the row-level restriction locks act cleanly on the postgres execution layer.
+## Author
+
+Chike Chiagbaizu
