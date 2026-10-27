@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Ir Rule User -->
+    <record id="rule_fleet_asset_user" model="ir.rule">
+        <field name="name">Fleet Asset: User Access</field>
+        <field name="model_id" ref="fleet_maintenance.model_fleet_asset" />
+        <field name="domain_force">[('assigned_employee_id.user_id','=',user.id)] </field>
+        <field name="groups" eval="[(4, ref('group_fleet_asset_user'))]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <!-- Ir Rule Manager -->
+    <record id="rule_fleet_asset_user" model="ir.rule">
+        <field name="name">Fleet Asset: Manager Access</field>
+        <field name="model_id" ref="fleet_maintenance.model_fleet_asset" />
+        <field name="domain_force">[(1,'=',1)] </field>
+        <field name="groups" eval="[(4, ref('group_fleet_asset_manager'))]" />
+    </record>
+</odoo>

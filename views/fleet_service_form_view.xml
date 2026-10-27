@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Fleet Service Form View -->
+    <record id="fleet_service_form_view" model="ir.ui.view">
+        <field name="name">Fleet Service Form</field>
+        <field name="model">fleet.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="asset_id" />
+                            <field name="service_date" />
+                            <field name="cost" />
+                            <field name="notes" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

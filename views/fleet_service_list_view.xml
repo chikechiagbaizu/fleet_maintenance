@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Fleet Service List View -->
+    <record id="fleet_service_list_view" model="ir.ui.view">
+        <field name="name">Fleet Service List</field>
+        <field name="model">fleet.service</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="asset_id" />
+                <field name="service_date" />
+                <field name="cost" />
+                <field name="notes" />
+            </list>
+        </field>
+    </record>
+</odoo>

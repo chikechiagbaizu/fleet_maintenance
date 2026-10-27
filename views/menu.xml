@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-    <data>
-        <!-- Fleet Asset Action -->
-        <record id="action_fleet_asset_registry" model="ir.actions.act_window">
-            <field name="name">Fleet and Asset</field>
-            <field name="res_model">fleet.asset</field>
-            <field name="view_mode">list,form</field>
-        </record>
-
-        <!-- Fleet Asset Menu -->
-        <menuitem name="Asset Management" id="menu_fleet_asset_root" sequence="1" />
-        <menuitem name="Assets" id="menu_fleet_asset_list" sequence="10"
-            parent="menu_fleet_asset_root" action="action_fleet_asset_registry" />
-    </data>
+    <menuitem id="fleet_maintenance_root_menu" name="Fleet Maintenance" sequence="1" />
+    <menuitem id="fleet_asset_menu" name="Assets" sequence="10"
+        parent="fleet_maintenance.fleet_maintenance_root_menu"
+        action="fleet_maintenance.action_fleet_asset" />
+    <menuitem id="fleet_service_menu" name="Service" sequence="20"
+        parent="fleet_maintenance.fleet_maintenance_root_menu"
+        action="fleet_maintenance.action_fleet_service" />
 </odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="action_fleet_asset" model="ir.actions.act_window">
+        <field name="name">Fleet Asset</field>
+        <field name="res_model">fleet.asset</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="fleet_maintenance.fleet_asset_list_view" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Fleet Asset
+            </p>
+        </field>
+    </record>
+</odoo>

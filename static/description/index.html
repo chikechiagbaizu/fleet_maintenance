@@ -1,0 +1,71 @@
+<section
+    style="font-family:system-ui,-apple-system,sans-serif;max-width:800px;margin:0 auto;padding:24px;line-height:1.6;color:#222;background:#fff">
+
+    <header style="border-bottom:3px solid #714B67;padding-bottom:12px;margin-bottom:20px">
+        <h1 style="margin:0 0 6px;color:#714B67">Service Fleet &amp; Maintenance Manager</h1>
+        <p style="margin:0;font-size:1.05em;color:#444">
+            Track company assets, log their services, and see at a glance which ones are due or overdue for maintenance.
+        </p>
+    </header>
+
+    <h2 style="color:#714B67">Features</h2>
+    <ul>
+        <li><b>Asset register:</b> laptops, vehicles and machinery, each with a responsible employee.</li>
+        <li><b>Vehicle details:</b> the license plate field appears only when the asset type is Vehicle.</li>
+        <li><b>Service history:</b> record each service with its date, type, description, cost, technician and state.
+            Deleting an asset also deletes its service records.</li>
+        <li><b>Preventative maintenance:</b> set a service interval in days. The last service date comes from the latest
+            completed service, and the next service date is calculated for you.</li>
+        <li><b>Overdue flag:</b> overdue assets are highlighted in the list and can be filtered in one click.</li>
+        <li><b>Mark Done:</b> close a planned service with one button and the asset's dates update automatically.</li>
+        <li><b>Multiple views:</b> form, list, kanban and search, with grouping by type and by employee.</li>
+    </ul>
+
+    <h2 style="color:#714B67">Built-in checks</h2>
+    <ul>
+        <li>The service interval must be greater than 0.</li>
+        <li>A service cost cannot be negative.</li>
+        <li>Only completed services count toward the last and next service dates.</li>
+    </ul>
+
+    <h2 style="color:#714B67">Asset types and service types</h2>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:8px">
+        <tr style="background:#f4eef3">
+            <th style="text-align:left;padding:8px;border:1px solid #ddd">Asset type</th>
+            <th style="text-align:left;padding:8px;border:1px solid #ddd">Notes</th>
+        </tr>
+        <tr>
+            <td style="padding:8px;border:1px solid #ddd">Laptop</td>
+            <td style="padding:8px;border:1px solid #ddd">IT equipment assigned to an employee</td>
+        </tr>
+        <tr>
+            <td style="padding:8px;border:1px solid #ddd">Vehicle</td>
+            <td style="padding:8px;border:1px solid #ddd">Adds a license plate field</td>
+        </tr>
+        <tr>
+            <td style="padding:8px;border:1px solid #ddd">Industrial Machinery</td>
+            <td style="padding:8px;border:1px solid #ddd">Heavy equipment with scheduled servicing</td>
+        </tr>
+    </table>
+    <p style="margin:0 0 8px;color:#444">Service types: <b>Routine</b>, <b>Repair</b> and <b>Inspection</b>.</p>
+
+    <h2 style="color:#714B67">Access rights</h2>
+    <ul>
+        <li><b>Fleet Managers:</b> full access to all assets and service records.</li>
+        <li><b>Fleet Users:</b> read-only access to the assets assigned to them.</li>
+    </ul>
+
+    <h2 style="color:#714B67">How to use</h2>
+    <ol>
+        <li>Create an asset under <b>Fleet &rarr; Assets</b>, then set its type, responsible employee and service
+            interval.</li>
+        <li>Add service records in the <b>Service History</b> tab of the asset.</li>
+        <li>When a service is finished, click <b>Mark Done</b>. The last and next service dates update on their own.
+        </li>
+        <li>Use the <b>Overdue</b> filter in the asset list to see what needs attention.</li>
+    </ol>
+
+    <footer style="margin-top:28px;padding-top:12px;border-top:1px solid #eee;color:#666;font-size:.9em">
+        Odoo 19.0 &nbsp;|&nbsp; Depends on: hr &nbsp;|&nbsp; LGPL-3 &nbsp;|&nbsp; Author: Chike Chiagbaizu
+    </footer>
+</section>
