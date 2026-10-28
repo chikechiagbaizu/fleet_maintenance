@@ -1,6 +1,6 @@
 {
-    'name': 'Service Fleet & Maintenance Manager',
-    'summary': 'Service Fleet & Maintenance Manager.',
+    'name': 'Fleet Maintenance',
+    'summary': 'Fleet Service & Maintenance.',
     'author': 'Chike Chiagbaizu',
     'maintainer': 'Chike Chiagbaizu',
     'version': '19.0.1.0.1',
