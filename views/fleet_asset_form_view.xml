@@ -13,6 +13,13 @@
                             <field name="name" />
                             <field name="asset_type" />
                             <field name="assigned_employee_id" />
+                            <field name="service_intervals_days" />
+                        </group>
+                        <group>
+                            <field name="license_plate" invisible="asset_type != 'vehicle'" />
+                            <field name="last_service_date" />
+                            <field name="next_service_date" />
+                            <field name="is_overdue" />
                         </group>
                     </group>
                     <notebook>

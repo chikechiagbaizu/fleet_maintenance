@@ -7,13 +7,23 @@
         <field name="model">fleet.service</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_mark_done" string="Mark Done" type="object"
+                        class="btn-primary" />
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name" />
                             <field name="asset_id" />
                             <field name="service_date" />
+                            <field name="service_type" />
+                        </group>
+                        <group>
                             <field name="cost" />
+                            <field name="technician_id" />
+                            <field name="state" />
                             <field name="notes" />
                         </group>
                     </group>
